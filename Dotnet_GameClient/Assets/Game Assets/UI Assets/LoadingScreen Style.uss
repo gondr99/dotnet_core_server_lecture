@@ -1,0 +1,52 @@
+.loading-root {
+    flex-grow: 1;
+    background-color: var(--col-bg);
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 60px;
+    padding-right: 60px;
+    padding-bottom: 60px;
+    padding-left: 60px;
+}
+
+.loading__center {
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.center__game-title {
+    font-size: 110px;
+    color: var(--col-accent);
+    -unity-text-align: upper-center;
+    -unity-text-outline-width: 3px;
+    -unity-text-outline-color: rgb(231, 231, 231);
+    letter-spacing: 8px;
+}
+
+.center__game-subtitle {
+    font-size: 26px;
+    color: var(--col-text-dim);
+    margin-top: 18px;
+    letter-spacing: 4px;
+    -unity-text-align: upper-center;
+}
+
+.loading__bottom {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.bottom__status {
+}
+
+.progress-track {
+}
+
+.progress-fill {
+}
+
+.version-label {
+}

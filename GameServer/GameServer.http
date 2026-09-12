@@ -1,0 +1,16 @@
+@host = http://localhost:5100
+@id = gondr
+@pw = 123456
+
+###############
+## 유저 테스트들
+###############
+
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "{{id}}",
+  "nickname": "최선한",
+  "password": "{{pw}}"
+}

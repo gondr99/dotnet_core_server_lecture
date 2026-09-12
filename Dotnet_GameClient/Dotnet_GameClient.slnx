@@ -1,0 +1,15 @@
+﻿<Solution>
+  <Project Path="PoolRuntime.csproj" />
+  <Project Path="CoreSystem_assembly.csproj" />
+  <Project Path="PoolEditor.csproj" />
+  <Project Path="FsmSystem_assembly.csproj" />
+  <Project Path="FsmSystem_Editor.csproj" />
+  <Project Path="FolderColor_Editor.csproj" />
+  <Project Path="SoundSystem_Assembly.csproj" />
+  <Project Path="SkillSystem_Assembly.csproj" />
+  <Project Path="ModuleSystem.csproj" />
+  <Project Path="PolyNavMesh_Assembly.csproj" />
+  <Project Path="AnimatorSystem_assembly.csproj" />
+  <Project Path="TopdownCombatSystem_assembly.csproj" />
+  <Project Path="SoundSystem_Editor.csproj" />
+</Solution>

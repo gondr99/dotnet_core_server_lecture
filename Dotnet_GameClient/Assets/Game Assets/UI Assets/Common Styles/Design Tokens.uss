@@ -1,0 +1,29 @@
+/* ============================================================
+   공통 디자인 토큰 (색 · 간격 · 폰트)
+   Desktop_Theme.tss가 @import → 이 테마를 쓰는 모든 UIDocument에 전역 적용된다.
+   픽셀 폰트 TTF를 넣은 뒤에는 아래 --app-font 주석만 풀어 연결하면 전 화면에 반영.
+   ============================================================ */
+:root {
+    /* 색 팔레트 — 다크 판타지 픽셀 RPG */
+    --col-bg:            rgb(23, 17, 31);
+    --col-bg-soft:       rgb(33, 24, 48);
+    --col-panel:         rgb(43, 33, 64);
+    --col-panel-soft:    rgb(56, 43, 82);
+    --col-border:        rgb(74, 58, 99);
+    --col-border-light:  rgb(120, 96, 158);
+    --col-accent:        rgb(240, 180, 41);
+    --col-accent-dark:   rgb(201, 147, 32);
+    --col-danger:        rgb(216, 86, 78);
+    --col-success:       rgb(107, 191, 89);
+    --col-text:          rgb(242, 233, 223);
+    --col-text-dim:      rgb(157, 143, 176);
+    --col-track:         rgb(14, 10, 21);
+
+    /* 기본 타이포 (상속 속성이라 하위 요소로 전파됨) */
+    color: var(--col-text);
+    font-size: 20px;
+
+    /* 픽셀 폰트 (SDF FontAsset) — :root에 걸어 전 화면 텍스트에 전역 적용.
+       SDF는 -unity-font(일반 TTF)가 아니라 -unity-font-definition 을 쓴다. */
+    -unity-font-definition: url("/Assets/_FontAssets/Moneygraphy-Pixel SDF.asset");
+}
