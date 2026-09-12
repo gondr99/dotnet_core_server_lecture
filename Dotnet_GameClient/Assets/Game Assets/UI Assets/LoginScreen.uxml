@@ -1,0 +1,37 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game%20Assets/UI%20Assets/LoginScreen%20Style.uss?fileID=7433441132597879392&amp;guid=2061fd84b7936c34eae5113e8eaaada6&amp;type=3#LoginScreen Style"/>
+    
+    <ui:VisualElement name="login-root" class="login-screen">
+        <ui:VisualElement name="login-panel" class="login-panel">
+            <ui:Label text="CASUAL RPG" class="login-logo" />
+
+            <ui:VisualElement name="tab-row" class="tab-row">
+                <ui:Button text="로그인" name="tab-login" class="tab-btn tab-btn--active" />
+                <ui:Button text="회원가입" name="tab-register" class="tab-btn" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="form" class="form">
+                <ui:Label text="아이디" class="field-label" />
+                <ui:TextField name="field-username" class="field-input" />
+
+                <ui:VisualElement name="row-nickname" class="field-group">
+                    <ui:Label text="닉네임" class="field-label" />
+                    <ui:TextField name="field-nickname" class="field-input" />
+                </ui:VisualElement>
+
+                <ui:Label text="비밀번호" class="field-label" />
+                <ui:TextField name="field-password" password="true" class="field-input" />
+
+                <ui:VisualElement name="row-password-confirm" class="field-group">
+                    <ui:Label text="비밀번호 확인" class="field-label" />
+                    <ui:TextField name="field-password-confirm" password="true" class="field-input" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:Label name="message-label" class="message-label" />
+            <ui:Button text="로그인" name="submit-btn" class="btn btn--primary submit-btn" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+
+    
+</ui:UXML>

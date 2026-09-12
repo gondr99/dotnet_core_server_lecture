@@ -1,0 +1,127 @@
+
+/* 로그인/회원가입 화면 전용 스타일. 공통 토큰·버튼은 Desktop_Theme.tss에서 온다. */
+.login-screen {
+    flex-grow: 1;
+    background-color: var(--col-bg);
+    align-items: center;
+    justify-content: center;
+}
+
+.login-panel {
+    width: 560px;
+    background-color: var(--col-panel);
+    border-width: 4px;
+    border-color: var(--col-border-light);
+    padding: 40px;
+    align-items: stretch;
+}
+
+.login-logo {
+    font-size: 56px;
+    color: var(--col-accent);
+    -unity-text-align: middle-center;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(26, 16, 32);
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+}
+
+/* ── 탭 (밑줄 탭 스타일) ─────────────────────────────
+   버튼 느낌을 없애고, 행 아래에 구분선을 깐 뒤 활성 탭만 강조색 밑줄이 겹치게 한다. */
+.tab-row {
+    flex-direction: row;
+    margin-bottom: 24px;
+    border-bottom-width: 3px;
+    border-bottom-color: var(--col-border);
+}
+
+.tab-btn {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);   /* 투명 — 버튼 배경 제거 */
+    border-width: 0;
+    border-bottom-width: 3px;
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    margin: 0;
+    margin-bottom: -3px;                  /* 행의 구분선과 겹쳐 '연결된 탭'처럼 */
+    padding: 12px 0;
+    font-size: 22px;
+    color: var(--col-text-dim);
+    -unity-text-align: middle-center;
+    transition-property: color, border-bottom-color;
+    transition-duration: 0.08s;
+}
+
+.tab-btn:hover {
+    color: var(--col-text);
+}
+
+.tab-btn--active {
+    color: var(--col-accent);
+    border-bottom-color: var(--col-accent);
+}
+
+/* ── 폼 ── */
+.field-label {
+    font-size: 18px;
+    color: var(--col-text-dim);
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+.field-input {
+    height: 48px;
+    font-size: 20px;
+}
+
+.field-input:focus .unity-base-text-field__input
+{
+    border-color: var(--col-border-light);
+    border-width: 4px;
+}
+
+.field-input .unity-base-text-field__input {
+    background-color: var(--col-track);
+    border-width: 3px;
+    border-color: var(--col-border);
+    border-radius: 0;
+    padding: 4px 10px;
+    transition: border-color 0.3s ease, border-width 0.3s ease;
+}
+
+.field-input .unity-base-text-field__input:focus {
+    border-color: var(--col-accent);
+}
+
+.message-label {
+    min-height: 26px;
+    font-size: 16px;
+    color: var(--col-danger);
+    -unity-text-align: middle-center;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+/* 성공 메시지는 초록으로(기본은 danger 빨강) */
+.message-label--success {
+    color: var(--col-success);
+}
+
+/* ── 제출 버튼 ── */
+.submit-btn {
+    height: 56px;
+    font-size: 24px;
+    margin-top: 8px;
+}
+
+/* 회원가입 모드: 버튼 색을 초록 계열로 구분(로그인=골드) */
+.submit-btn--register {
+    background-color: var(--col-success);
+    border-color: var(--col-success-dark);
+    color: rgb(18, 28, 14);
+}
+
+.submit-btn--register:hover {
+    background-color: var(--col-success-light);
+    border-color: var(--col-success);
+}

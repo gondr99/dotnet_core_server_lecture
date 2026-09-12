@@ -18,6 +18,8 @@
     --col-text:          rgb(242, 233, 223);
     --col-text-dim:      rgb(157, 143, 176);
     --col-track:         rgb(14, 10, 21);
+    --col-success-dark:  rgb(80, 150, 66);
+    --col-success-light: rgb(130, 210, 110);
 
     /* 기본 타이포 (상속 속성이라 하위 요소로 전파됨) */
     color: var(--col-text);

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Networking.Dtos;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
