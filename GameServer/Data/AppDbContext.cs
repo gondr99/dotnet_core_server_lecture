@@ -20,4 +20,5 @@ public class AppDbContext : DbContext
             .HasIndex(u => u.Username)
             .IsUnique();
     }
+
 }
