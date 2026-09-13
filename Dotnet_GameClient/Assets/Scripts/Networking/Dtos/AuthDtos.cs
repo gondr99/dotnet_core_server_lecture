@@ -8,6 +8,19 @@ namespace Networking.Dtos
         public string Nickname { get; set; }
         public string Password { get; set; }
     }
+
+    public class LoginRequest
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class LoginResponse
+    {
+        public string Token { get; set; }
+        public DateTime ExpiresAt { get; set; }
+        public UserResponse User { get; set; }
+    }
     
     public class UserResponse
     {
@@ -15,6 +28,9 @@ namespace Networking.Dtos
         public string Username { get; set; } = null!;
         public string Nickname { get; set; } = null!;
         public long Gold { get; set; }
+        public int Level { get; set; }
+        public long Exp { get; set; }
         public DateTime CreatedAt { get; set; }
     }
+    
 }

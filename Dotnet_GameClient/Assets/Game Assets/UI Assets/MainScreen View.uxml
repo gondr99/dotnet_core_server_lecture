@@ -1,0 +1,32 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game%20Assets/UI%20Assets/MainScreen%20Style.uss?fileID=7433441132597879392&amp;guid=5d94549ebaeb5204cbeb1f72916b5bdf&amp;type=3#MainScreen Style"/>
+    
+    <ui:VisualElement name="main-root" class="main-screen">
+
+        <!-- 중앙: 게임 타이틀 (큰 볼드) -->
+        <ui:Label text="CASUAL RPG" name="main-title" class="main-title" />
+
+        <!-- 좌하단: 메뉴 (밑줄 텍스트) -->
+        <ui:VisualElement name="menu" class="menu">
+            <ui:Button text="Play Game" name="menu-play" class="menu-item" />
+            <ui:Button text="Option" name="menu-option" class="menu-item" />
+            <ui:Button text="Quit" name="menu-quit" class="menu-item" />
+        </ui:VisualElement>
+
+        <!-- 우하단: 버전 -->
+        <ui:Label text="v0.1.0" name="version-label" class="main-version" />
+
+        <!-- 우상단: 설정(톱니) 버튼 -->
+        <ui:Button text="⚙" name="gear-btn" class="gear-btn" />
+
+        <!-- 설정 팝업 (기본 숨김) -->
+        <ui:VisualElement name="settings-popup" class="settings-popup">
+            <ui:Label text="내 정보" class="popup-title" />
+            <ui:Label name="popup-nickname" class="popup-line" />
+            <ui:Label name="popup-level" class="popup-line" />
+            <ui:Button text="로그아웃" name="logout-btn" class="btn logout-btn" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>

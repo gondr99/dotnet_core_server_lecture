@@ -1,0 +1,66 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game%20Assets/UI%20Assets/TownScreen%20Style.uss?fileID=7433441132597879392&amp;guid=9edeaa745fe5afa41a08ebd0d64cfb6d&amp;type=3#TownScreen Style"/>
+    
+    <ui:VisualElement name="town-root" class="town-screen">
+
+        <!-- 좌상단 HUD: 레벨 · 체력 · 경험치 -->
+        <ui:VisualElement name="hud" class="hud">
+            <ui:VisualElement class="hud-head">
+                <ui:Label text="Lv. 1" name="hud-level" class="hud-level" />
+                <ui:Label text="" name="hud-nickname" class="hud-nickname" />
+            </ui:VisualElement>
+
+            <!-- 체력 바 (지금은 자리표시값) -->
+            <ui:VisualElement class="bar-row">
+                <ui:Label text="HP" class="bar-tag" />
+                <ui:VisualElement class="bar-track">
+                    <ui:VisualElement name="hp-fill" class="bar-fill bar-fill--hp" />
+                    <ui:Label text="100 / 100" name="hp-text" class="bar-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- 경험치 바 (서버 실데이터) -->
+            <ui:VisualElement class="bar-row">
+                <ui:Label text="EXP" class="bar-tag" />
+                <ui:VisualElement class="bar-track">
+                    <ui:VisualElement name="exp-fill" class="bar-fill bar-fill--exp" />
+                    <ui:Label text="0 / 0" name="exp-text" class="bar-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 우상단: 마을 나가기 -->
+        <ui:Button text="← 마을 나가기" name="leave-btn" class="leave-btn" />
+
+        <!-- 하단 중앙: 스킬 슬롯 Q · E · R · F -->
+        <ui:VisualElement name="skill-bar" class="skill-bar">
+            <ui:VisualElement class="skill-slot">
+                <ui:Label text="Q" class="skill-key" />
+            </ui:VisualElement>
+            <ui:VisualElement class="skill-slot">
+                <ui:Label text="E" class="skill-key" />
+            </ui:VisualElement>
+            <ui:VisualElement class="skill-slot">
+                <ui:Label text="R" class="skill-key" />
+            </ui:VisualElement>
+            <ui:VisualElement class="skill-slot">
+                <ui:Label text="F" class="skill-key" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 좌하단: 채팅창 (일반/길드 선택 + 스크롤 로그 + 입력) -->
+        <ui:VisualElement name="chat" class="chat">
+            <ui:VisualElement class="chat-tabs">
+                <ui:Button text="일반" name="chat-tab-normal" class="chat-tab chat-tab--active" />
+                <ui:Button text="길드" name="chat-tab-guild" class="chat-tab" />
+            </ui:VisualElement>
+            <ui:ScrollView name="chat-log" class="chat-log" mode="Vertical" />
+            <ui:VisualElement class="chat-input-row">
+                <ui:TextField name="chat-input" class="chat-input" />
+                <ui:Button text="전송" name="chat-send" class="btn btn--primary chat-send" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>

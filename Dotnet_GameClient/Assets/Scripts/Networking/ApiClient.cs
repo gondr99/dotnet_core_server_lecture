@@ -17,6 +17,11 @@ namespace Networking
         [SerializeField] private string serverUrl = "http://localhost:5100";
         [SerializeField] private int timeoutSeconds = 10; //10초간 연결안되면 서버 꺼진거.
         
+        private const string TokenPrefKey = "token";
+        
+        public string Token { get; private set; }
+        public bool HasToken => !string.IsNullOrEmpty(Token);
+        
         public string ServerUrl => serverUrl;
         
         //서버쪽 메시지들이 CamelCase로 되어 있어서 그걸 기반으로 Resolving을 해야한다.
@@ -45,6 +50,9 @@ namespace Networking
 
             Instance = this;
             DontDestroyOnLoad(gameObject); //자기자신 삭제 금지.
+
+            string saved = PlayerPrefs.GetString(TokenPrefKey, string.Empty);
+            Token = string.IsNullOrEmpty(saved) ? null : saved;
         }
 
 
@@ -76,6 +84,9 @@ namespace Networking
             }
             
             req.SetRequestHeader("Accept", "application/json");
+            
+            if(HasToken)
+                req.SetRequestHeader("Authorization", $"Bearer {Token}");
 
             try
             {
@@ -140,6 +151,25 @@ namespace Networking
 
             error.Message = body;
             return error; //여기까지 왔다는건 올바르게 메시지 못받았다는 뜻.
+        }
+
+        #endregion
+
+
+        #region Web build
+
+        public void SetToken(string token)
+        {
+            Token = token;
+            PlayerPrefs.SetString(TokenPrefKey, token);
+            PlayerPrefs.Save();
+        }
+
+        public void ClearToken()
+        {
+            Token = null;
+            PlayerPrefs.DeleteKey(TokenPrefKey);
+            PlayerPrefs.Save();
         }
 
         #endregion

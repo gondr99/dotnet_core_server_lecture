@@ -1,0 +1,127 @@
+
+/* 메인 화면 전용 스타일. 공통 토큰·버튼은 Desktop_Theme.tss에서 온다. */
+.main-screen {
+    flex-grow: 1;
+    background-color: var(--col-bg);
+    align-items: center;
+    justify-content: center;
+}
+
+/* 중앙 타이틀 (큰 볼드) */
+.main-title {
+    font-size: 150px;
+    -unity-font-style: bold;
+    color: var(--col-text);
+    -unity-text-align: middle-center;
+    -unity-text-outline-width: 4px;
+    -unity-text-outline-color: rgb(26, 16, 32);
+    letter-spacing: 6px;
+}
+
+/* ── 좌하단 메뉴 (밑줄 텍스트, 버튼 아님) ── */
+.menu {
+    position: absolute;
+    left: 48px;
+    bottom: 48px;
+    align-items: flex-start;
+}
+
+.menu-item {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    border-bottom-width: 3px;
+    border-bottom-color: var(--col-text-dim);
+    border-radius: 0;
+    margin: 6px 0;
+    padding: 4px 10px;
+    font-size: 34px;
+    color: var(--col-text);
+    -unity-text-align: middle-left;
+    transition-property: translate, background-color, border-bottom-color, color;
+    transition-duration: 0.1s;
+}
+
+/* 호버: 밑선이 올라가고(translate) 배경색이 드러남 */
+.menu-item:hover {
+    translate: 0 -5px;
+    background-color: var(--col-panel-soft);
+    border-bottom-color: var(--col-accent);
+    color: var(--col-accent);
+}
+
+.menu-item:active {
+    color: var(--col-accent-dark);
+}
+
+/* 우하단 버전 */
+.main-version {
+    position: absolute;
+    right: 24px;
+    bottom: 20px;
+    font-size: 20px;
+    color: var(--col-text-dim);
+}
+
+/* ── 우상단 톱니 버튼 ── */
+.gear-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 64px;
+    height: 64px;
+    font-size: 34px;
+    background-color: var(--col-panel);
+    border-width: 3px;
+    border-color: var(--col-border-light);
+    border-radius: 0;
+    color: var(--col-text);
+    margin: 0;
+    padding: 0;
+}
+
+.gear-btn:hover {
+    background-color: var(--col-panel-soft);
+    border-color: var(--col-accent);
+    color: var(--col-accent);
+}
+
+/* ── 설정 팝업 ── */
+.settings-popup {
+    position: absolute;
+    top: 100px;
+    right: 24px;
+    width: 300px;
+    display: none;                 /* 기본 숨김 (컨트롤러가 토글) */
+    background-color: var(--col-panel);
+    border-width: 4px;
+    border-color: var(--col-border-light);
+    padding: 20px;
+    align-items: stretch;
+}
+
+.popup-title {
+    font-size: 24px;
+    color: var(--col-accent);
+    -unity-text-align: middle-center;
+    margin-bottom: 12px;
+}
+
+.popup-line {
+    font-size: 22px;
+    color: var(--col-text);
+    margin-bottom: 8px;
+}
+
+.logout-btn {
+    margin-top: 12px;
+    height: 48px;
+    font-size: 20px;
+    background-color: var(--col-danger);
+    border-color: rgb(150, 50, 46);
+    color: rgb(28, 14, 14);
+}
+
+.logout-btn:hover {
+    background-color: rgb(230, 110, 100);
+    border-color: var(--col-danger);
+}

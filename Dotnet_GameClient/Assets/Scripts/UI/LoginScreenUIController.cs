@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using CoreSystem;
 using CoreSystem.Util;
 using Networking;
 using Networking.Dtos;
@@ -45,8 +46,30 @@ namespace UI
             _submitBtn.clicked += () => HandleSubmit().Forget();
             
             SetRegisterMode(false);
+
+            _ = TryAutoLogin();
+        }
+
+        private async Task TryAutoLogin()
+        {
+            if (!ApiClient.Instance.HasToken)
+                return;
             
-            //나중에 여기에 자동로그인 추가됩니다.
+            SetBusy(true);
+            SetMessage(_message, "자동 로그인 확인중 ...", isSuccess: true);
+
+            ApiResult<UserResponse> result = await AuthApi.MeAsync();
+
+            if (result.IsSuccess)
+            {
+                Session.CurrentUser = result.Data;
+                SceneRouter.Go(SceneRouter.MainScene);
+                return;
+            }
+            
+            ApiClient.Instance.ClearToken(); //이 토큰은 문제가 있으니
+            SetBusy(false);
+            SetMessage(_message, "토큰이 올바르지 않습니다. 로그인해주세요", isSuccess:false);
         }
 
         private async Task HandleSubmit()
@@ -66,7 +89,28 @@ namespace UI
             if(_isRegisterMode)
                 await DoRegister(username, password);
             else
-                Debug.Log("로그인 처리는 아직입니다.");
+                await DoLogin(username, password);
+        }
+
+        private async Task DoLogin(string username, string password)
+        {
+            SetBusy(true);
+            ApiResult<LoginResponse> result = await AuthApi.LoginAsync(username, password);
+            SetBusy(false);
+
+            if (result.IsSuccess)
+            {
+                Debug.Log($"[Login] 로그인 성공, 토큰 저장됨 = userId {result.Data.User?.Id}");
+                Debug.Log($"[Token] {result.Data.Token}");
+                
+                //현재 유저를 세션에 저장하고 다른씬으로 넘겨야 한다.
+                Session.CurrentUser = result.Data.User;
+                SceneRouter.Go(SceneRouter.MainScene);
+            }
+            else
+            {
+                SetMessage(_message, result.Error.ToUserMessage());
+            }
         }
 
         private async Task DoRegister(string username, string password)

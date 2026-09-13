@@ -11,11 +11,13 @@ public class AuthService
     private readonly AppDbContext _db;
     private readonly IPasswordHasher<User> _passwordHasher; 
     //User타입에 대한 Haser를 등록한다.
+    private readonly TokenService _tokenService;
 
-    public AuthService(AppDbContext db, IPasswordHasher<User> passwordHasher)
+    public AuthService(AppDbContext db, IPasswordHasher<User> passwordHasher, TokenService tokenService)
     {
         _db = db;
         _passwordHasher = passwordHasher;
+        _tokenService = tokenService;
     }
 
     public async Task<UserResponse?> RegisterAsync(RegisterRequest request)
@@ -30,6 +32,7 @@ public class AuthService
         {
             Username = request.Username,
             Nickname = request.Nickname,
+            Character = new Character ()
             //골드와 Create at은 기본값을 사용한다.
         };
         
@@ -42,5 +45,46 @@ public class AuthService
         await _db.SaveChangesAsync(); //Insert sql 수행
 
         return UserResponse.FromEntity(user);
+    }
+
+    public async Task<LoginResponse?> LoginAsync(LoginRequest request)
+    {
+        //DB에 SELECT 쿼리가 만들어져서 날아간다.
+        // SELECT * FROM users WHERE username = 'request.Username'
+        User? user = await _db.Users
+            .Include(u => u.Character)
+            .FirstOrDefaultAsync(u => u.Username == request.Username);
+
+        if (user is null)
+            return null;
+
+        PasswordVerificationResult verifyResult =
+            _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
+
+        if (verifyResult == PasswordVerificationResult.Failed)
+            return null;
+
+        if (user.Character is null)
+        {
+            user.Character = new Character();
+            await _db.SaveChangesAsync();
+        }
+        
+        (string token, DateTime expiredAt) = _tokenService.CreateToken(user);
+
+        return new LoginResponse
+        {
+            Token = token,
+            ExpiresAt = expiredAt,
+            User = UserResponse.FromEntity(user)
+        };
+    }
+    
+    public async Task<UserResponse?> GetProfileAsync(int userId)
+    {
+        User? user = await _db.Users
+            .Include(u => u.Character)
+            .FirstOrDefaultAsync(u => u.Id == userId);
+        return user is null ? null : UserResponse.FromEntity(user);
     }
 }
